@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/app/app.dart';
 import 'package:personal_portfolio/app/app.router.dart';
@@ -9,6 +11,7 @@ import 'package:personal_portfolio/ui/views/menu/menu_page.dart';
 import 'package:personal_portfolio/ui/widgets/animated_app_bar.dart';
 import 'package:personal_portfolio/ui/widgets/custom_page_transition.dart';
 import 'package:personal_portfolio/ui/widgets/menu_button.dart';
+import 'package:stacked/stacked.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({Key? key, required this.page}) : super(key: key);
@@ -19,6 +22,7 @@ class Wrapper extends StatefulWidget {
 
 class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
   bool _isDrawerOpen = false;
+  bool _isTransitioning = false;
   int sectors = 10;
   double screenWidth = s0;
   double sectorWidth = s0;
@@ -86,30 +90,56 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
     }
   }
 
+  PageRouteInfo<dynamic> getRouteWithRouteName(String routeName) {
+    switch (routeName) {
+      case Routes.home:
+        return HomeViewRoute();
+
+      case Routes.projectsView:
+        return const ProjectsViewRoute();
+
+      case Routes.unknownView:
+        return const UnknownViewRoute();
+
+      default:
+        return const UnknownViewRoute();
+    }
+  }
+
   void _handleNavigation(String routeName) {
     _menuController.reverse().then((value) {
       if (_menuController.status == AnimationStatus.dismissed) {
         _loadingController.forward();
         _appBarController.forward();
-        setState(() {
-          _isDrawerOpen = !_isDrawerOpen;
-        });
         navigate(routeName);
       }
     });
   }
 
-  Future<void> navigate(String routeName) async {
-    await _loadingController.forward();
-    await Future.delayed(const Duration(milliseconds: 16));
+  void navigate(String routeName) {
+    final currentRoute = stackedRouter.currentPath;
+    if (currentRoute != routeName) {
+      setState(() {
+        _isTransitioning = true;
+      });
+    }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {}); // force layout flush
+    if (_isDrawerOpen) {
+      setState(() {
+        _isDrawerOpen = false;
+      });
+    }
+
+    _loadingController.addStatusListener((status) async {
+      if (status == AnimationStatus.completed) {
+        await Future.delayed(const Duration(milliseconds: 16));
+
+        stackedRouter.replace(getRouteWithRouteName(routeName));
+
+        _loadingController.reset();
+        _appBarController.reset();
+      }
     });
-
-    await stackedRouter.replaceNamed(routeName);
-    _loadingController.reset();
-    _appBarController.reset();
   }
 
   void navigateToHomePage() {
@@ -126,6 +156,8 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
         animation: _appBarController.view,
         appBar: AppBar(
           leadingWidth: context.adaptive(s40, s70),
+          automaticallyImplyLeading: false,
+          leading: buildHomeButton(),
           actions: [
             MenuButton(
               onPressed: onMenuTapped,
@@ -136,7 +168,7 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
         ),
       ),
       body: <Widget>[
-        widget.page,
+        if (!_isTransitioning) widget.page,
         MenuPage(
           onMenuItemTapped: (index) => _handleNavigation(ksMenu[index].route),
           animation: _menuController.view,
@@ -148,7 +180,7 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
               startController: _loadingController,
               height: context.screenHeight,
               width: sectorWidth,
-              boxColor: kBlack,
+              boxColor: kWhite,
               coverColor: kPrimary,
               index: index,
               slideInterval: _itemSlideIntervals[index],
@@ -158,6 +190,21 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         ),
       ].addStack(),
+    );
+  }
+
+  IconButton buildHomeButton() {
+    double size = context.adaptive<double>(
+      s20,
+      s40,
+    );
+    return IconButton(
+      onPressed: navigateToHomePage,
+      icon: Icon(
+        Icons.home,
+        color: kWhite,
+        size: size,
+      ),
     );
   }
 }

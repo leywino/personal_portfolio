@@ -1,12 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:personal_portfolio/app/app.dart';
-import 'package:personal_portfolio/app/app.router.dart';
-import 'package:personal_portfolio/ui/common/constant_colors.dart';
-import 'package:personal_portfolio/ui/common/constants.dart';
-import 'package:personal_portfolio/ui/common/constant_strings.dart';
-import 'package:personal_portfolio/ui/common/constant_sizes.dart';
-import 'package:personal_portfolio/ui/widgets/animated_text_slide_box_transition.dart';
-import 'package:personal_portfolio/ui/widgets/custom_button.dart';
+import 'package:personal_portfolio/extensions/extensions.dart';
+import 'package:personal_portfolio/ui/views/home/widgets/about_me_page.dart';
+import 'package:personal_portfolio/ui/views/home/widgets/introduction_page.dart';
 import 'package:stacked/stacked.dart';
 
 import 'home_viewmodel.dart';
@@ -20,65 +17,36 @@ class HomeViewDesktop extends StatefulWidget {
 
 class _HomeViewDesktopState extends State<HomeViewDesktop>
     with TickerProviderStateMixin {
-  late AnimationController _controller;
+  late final HomeViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: duration3000,
-    )..forward();
+    _viewModel = HomeViewModel();
+    _viewModel.init(this);
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    log('rebuild desktop');
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) {
         return Scaffold(
-          body: Center(
+          body: SingleChildScrollView(
             child: SizedBox(
-              width: kdDesktopMaxContentWidth,
-              height: kdDesktopMaxContentHeight,
+              width: context.screenWidth,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(ksHiMyNameIs,
-                          style: Theme.of(context).textTheme.displayMedium),
-                      horizontalSpaceMassive,
-                      AnimatedTextSlideBoxTransition(
-                        boxColor: kWhite,
-                        controller: _controller,
-                        coverColor: Theme.of(context).scaffoldBackgroundColor,
-                        text: ksRealName,
-                        textStyle: Theme.of(context)
-                            .textTheme
-                            .displayMedium
-                            ?.copyWith(
-                                fontWeight: FontWeight.bold, color: kCoralPink),
-                      ),
-                    ],
-                  ),
-                  Text("$ksIamA $ksFlutterDev",
-                      style: Theme.of(context).textTheme.displayMedium),
-                  verticalSpaceLarge,
-                  CustomButton(
-                    onTap: () {
-                      stackedRouter.navigateNamed(Routes.unknownView);
-                    },
-                    text: ksKnowMore,
-                  ),
+                  IntroductionPage(viewModel: _viewModel),
+                  const AboutMePage(),
                 ],
               ),
             ),

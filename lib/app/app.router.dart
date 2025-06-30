@@ -23,9 +23,14 @@ class StackedRouterWeb extends _i5.RootStackRouter {
   @override
   final Map<String, _i5.PageFactory> pagesMap = {
     HomeViewRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<HomeViewArgs>(orElse: () => const HomeViewArgs());
       return _i5.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i1.HomeView(),
+        child: _i1.HomeView(
+          key: args.key,
+          refresh: args.refresh,
+        ),
         opaque: true,
         barrierDismissible: false,
       );
@@ -73,14 +78,36 @@ class StackedRouterWeb extends _i5.RootStackRouter {
 
 /// generated route for
 /// [_i1.HomeView]
-class HomeViewRoute extends _i5.PageRouteInfo<void> {
-  const HomeViewRoute()
-      : super(
+class HomeViewRoute extends _i5.PageRouteInfo<HomeViewArgs> {
+  HomeViewRoute({
+    _i6.Key? key,
+    bool refresh = false,
+  }) : super(
           HomeViewRoute.name,
           path: '/',
+          args: HomeViewArgs(
+            key: key,
+            refresh: refresh,
+          ),
         );
 
   static const String name = 'HomeView';
+}
+
+class HomeViewArgs {
+  const HomeViewArgs({
+    this.key,
+    this.refresh = false,
+  });
+
+  final _i6.Key? key;
+
+  final bool refresh;
+
+  @override
+  String toString() {
+    return 'HomeViewArgs{key: $key, refresh: $refresh}';
+  }
 }
 
 /// generated route for
@@ -108,10 +135,16 @@ class UnknownViewRoute extends _i5.PageRouteInfo<void> {
 }
 
 extension RouterStateExtension on _i4.RouterService {
-  Future<dynamic> navigateToHomeView(
-      {void Function(_i5.NavigationFailure)? onFailure}) async {
+  Future<dynamic> navigateToHomeView({
+    _i6.Key? key,
+    bool refresh = false,
+    void Function(_i5.NavigationFailure)? onFailure,
+  }) async {
     return navigateTo(
-      const HomeViewRoute(),
+      HomeViewRoute(
+        key: key,
+        refresh: refresh,
+      ),
       onFailure: onFailure,
     );
   }
@@ -132,10 +165,16 @@ extension RouterStateExtension on _i4.RouterService {
     );
   }
 
-  Future<dynamic> replaceWithHomeView(
-      {void Function(_i5.NavigationFailure)? onFailure}) async {
+  Future<dynamic> replaceWithHomeView({
+    _i6.Key? key,
+    bool refresh = false,
+    void Function(_i5.NavigationFailure)? onFailure,
+  }) async {
     return replaceWith(
-      const HomeViewRoute(),
+      HomeViewRoute(
+        key: key,
+        refresh: refresh,
+      ),
       onFailure: onFailure,
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/ui/widgets/mouse_transforms/scale_on_hover.dart';
 import 'package:personal_portfolio/ui/widgets/mouse_transforms/translate_on_hover.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class CustomButton extends StatefulWidget {
   final VoidCallback onTap;
@@ -35,6 +36,24 @@ class _CustomButtonState extends State<CustomButton> {
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = getValueForScreenType<TextStyle>(
+      context: context,
+      desktop: const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+      mobile: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+
+    final padding = getValueForScreenType<EdgeInsets>(
+      context: context,
+      desktop: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+      mobile: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+    );
+
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovering = true),
       onExit: (_) => setState(() => _isHovering = false),
@@ -47,7 +66,7 @@ class _CustomButtonState extends State<CustomButton> {
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               curve: Curves.easeInOut,
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+              padding: padding,
               decoration: BoxDecoration(
                 color: _isHovering
                     ? widget.hoverBackgroundColor
@@ -62,12 +81,10 @@ class _CustomButtonState extends State<CustomButton> {
               ),
               child: Text(
                 widget.text,
-                style: TextStyle(
+                style: textStyle.copyWith(
                   color: _isHovering
                       ? widget.hoverTextColor
                       : widget.defaultTextColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),

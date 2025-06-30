@@ -1,50 +1,58 @@
-import 'package:personal_portfolio/ui/common/constant_sizes.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:personal_portfolio/extensions/extensions.dart';
+import 'package:personal_portfolio/ui/views/home/widgets/about_me_page.dart';
+import 'package:personal_portfolio/ui/views/home/widgets/introduction_page.dart';
 import 'package:stacked/stacked.dart';
 
 import 'home_viewmodel.dart';
 
-class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
+class HomeViewTablet extends StatefulWidget {
   const HomeViewTablet({super.key});
 
   @override
-  Widget build(BuildContext context, HomeViewModel viewModel) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                verticalSpaceLarge,
-                Column(
-                  children: [
-                    const Text(
-                      'Hello, TABLET UI!',
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    verticalSpaceMedium,
-                    MaterialButton(
-                      color: Colors.black,
-                      onPressed: viewModel.incrementCounter,
-                      child: Text(
-                        viewModel.counterLabel,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-            
-              ],
+  State<HomeViewTablet> createState() => _HomeViewTabletState();
+}
+
+class _HomeViewTabletState extends State<HomeViewTablet>
+    with TickerProviderStateMixin {
+  late final HomeViewModel _viewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    _viewModel = HomeViewModel();
+    _viewModel.init(this);
+  }
+
+  @override
+  void dispose() {
+    _viewModel.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    log('rebuild tablet');
+    return ViewModelBuilder<HomeViewModel>.reactive(
+      viewModelBuilder: () => HomeViewModel(),
+      builder: (context, viewModel, child) {
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: SizedBox(
+              width: context.screenWidth,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IntroductionPage(viewModel: _viewModel),
+                  const AboutMePage(),
+                ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

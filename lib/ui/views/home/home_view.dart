@@ -9,7 +9,9 @@ import 'home_view.mobile.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
-  const HomeView({super.key});
+  const HomeView({super.key, this.refresh = false});
+
+  final bool refresh;
 
   @override
   Widget builder(BuildContext context, HomeViewModel viewModel, Widget? child) {
