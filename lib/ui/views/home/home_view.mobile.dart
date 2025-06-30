@@ -1,5 +1,4 @@
-import 'package:personal_portfolio/ui/common/app_colors.dart';
-import 'package:personal_portfolio/ui/common/ui_helpers.dart';
+import 'package:personal_portfolio/ui/common/constant_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -40,27 +39,7 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MaterialButton(
-                      color: kBlossom,
-                      onPressed: viewModel.showDialog,
-                      child: const Text(
-                        'Show Dialog',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    MaterialButton(
-                      color: kBlossom,
-                      onPressed: viewModel.showBottomSheet,
-                      child: const Text(
-                        'Show Bottom Sheet',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
+             
               ],
             ),
           ),

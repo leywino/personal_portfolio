@@ -1,5 +1,5 @@
-import 'package:personal_portfolio/ui/common/app_colors.dart';
-import 'package:personal_portfolio/ui/common/ui_helpers.dart';
+import 'package:personal_portfolio/ui/common/constant_colors.dart';
+import 'package:personal_portfolio/ui/common/constant_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -10,8 +10,8 @@ class UnknownViewDesktop extends ViewModelWidget<UnknownViewModel> {
 
   @override
   Widget build(BuildContext context, UnknownViewModel viewModel) {
-    return const Scaffold(
-      backgroundColor: kBlack,
+    return Scaffold(
+      backgroundColor: kPrimary,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -19,7 +19,7 @@ class UnknownViewDesktop extends ViewModelWidget<UnknownViewModel> {
             Text(
               '404',
               style: TextStyle(
-                color: Colors.white,
+                color: kWhite,
                 fontSize: 80,
                 fontWeight: FontWeight.w800,
                 height: 0.95,
@@ -30,7 +30,7 @@ class UnknownViewDesktop extends ViewModelWidget<UnknownViewModel> {
             Text(
               'PAGE NOT FOUND',
               style: TextStyle(
-                color: Colors.white,
+                color: kWhite,
                 fontSize: 20,
                 letterSpacing: 20.0,
                 wordSpacing: 10.0,

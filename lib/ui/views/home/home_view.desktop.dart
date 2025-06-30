@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:personal_portfolio/ui/common/app_colors.dart';
-import 'package:personal_portfolio/ui/common/app_constants.dart';
-import 'package:personal_portfolio/ui/common/app_strings.dart';
-import 'package:personal_portfolio/ui/common/ui_helpers.dart';
+import 'package:personal_portfolio/app/app.dart';
+import 'package:personal_portfolio/app/app.router.dart';
+import 'package:personal_portfolio/ui/common/constant_colors.dart';
+import 'package:personal_portfolio/ui/common/constants.dart';
+import 'package:personal_portfolio/ui/common/constant_strings.dart';
+import 'package:personal_portfolio/ui/common/constant_sizes.dart';
 import 'package:personal_portfolio/ui/widgets/animated_text_slide_box_transition.dart';
 import 'package:personal_portfolio/ui/widgets/custom_button.dart';
 import 'package:stacked/stacked.dart';
@@ -27,6 +29,12 @@ class _HomeViewDesktopState extends State<HomeViewDesktop>
       vsync: this,
       duration: duration3000,
     )..forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -66,8 +74,10 @@ class _HomeViewDesktopState extends State<HomeViewDesktop>
                       style: Theme.of(context).textTheme.displayMedium),
                   verticalSpaceLarge,
                   CustomButton(
-                    onTap: () {},
-                    text: "Know More",
+                    onTap: () {
+                      stackedRouter.navigateNamed(Routes.unknownView);
+                    },
+                    text: ksKnowMore,
                   ),
                 ],
               ),

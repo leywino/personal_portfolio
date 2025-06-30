@@ -1,8 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
-import 'package:personal_portfolio/app/app.bottomsheets.dart';
 import 'package:personal_portfolio/app/app.locator.dart';
-import 'package:personal_portfolio/ui/common/app_strings.dart';
 import 'package:personal_portfolio/ui/views/home/home_viewmodel.dart';
 
 import '../helpers/test_helpers.dart';
@@ -20,25 +17,6 @@ void main() {
         model.incrementCounter();
         expect(model.counterLabel, 'Counter is: 1');
       });
-    });
-
-    group('showBottomSheet -', () {
-      test(
-        'When called, should show custom bottom sheet using notice variant',
-        () {
-          final bottomSheetService = getAndRegisterBottomSheetService();
-
-          final model = getModel();
-          model.showBottomSheet();
-          verify(
-            bottomSheetService.showCustomSheet(
-              variant: BottomSheetType.notice,
-              title: ksHomeBottomSheetTitle,
-              description: ksHomeBottomSheetDescription,
-            ),
-          );
-        },
-      );
     });
   });
 }

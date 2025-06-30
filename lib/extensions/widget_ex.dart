@@ -154,11 +154,11 @@ extension WidgetListEx on List<Widget> {
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
       ),
-      md: addColumn(
-        mainAxisSize: mSize,
-        mainAxisAlignment: mainAxisAlignment,
-        crossAxisAlignment: crossAxisAlignment,
-      ),
+      // md: addColumn(
+      //   mainAxisSize: mSize,
+      //   mainAxisAlignment: mainAxisAlignment,
+      //   crossAxisAlignment: crossAxisAlignment,
+      // ),
     );
   }
 

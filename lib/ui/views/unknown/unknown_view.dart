@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_portfolio/ui/views/wrapper.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
 
@@ -16,10 +17,12 @@ class UnknownView extends StackedView<UnknownViewModel> {
     UnknownViewModel viewModel,
     Widget? child,
   ) {
-    return ScreenTypeLayout.builder(
-      mobile: (_) => const UnknownViewMobile(),
-      tablet: (_) => const UnknownViewTablet(),
-      desktop: (_) => const UnknownViewDesktop(),
+    return Wrapper(
+      page: ScreenTypeLayout.builder(
+        mobile: (_) => const UnknownViewMobile(),
+        tablet: (_) => const UnknownViewTablet(),
+        desktop: (_) => const UnknownViewDesktop(),
+      ),
     );
   }
 

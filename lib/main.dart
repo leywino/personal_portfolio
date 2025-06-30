@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/extensions/theme_ex.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:personal_portfolio/app/app.bottomsheets.dart';
-import 'package:personal_portfolio/app/app.dialogs.dart';
 import 'package:personal_portfolio/app/app.locator.dart';
 import 'package:personal_portfolio/app/app.router.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -12,8 +10,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
   await setupLocator(stackedRouter: stackedRouter);
-  setupDialogUi();
-  setupBottomSheetUi();
   runApp(const MainApp());
 }
 
