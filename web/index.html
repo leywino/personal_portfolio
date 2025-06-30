@@ -33,22 +33,21 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
+
 
   <title>My Stacked Application</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = null;
+    const serviceWorkerVersion = "{{flutter_service_worker_version}}";
   </script>
   <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
+  <script src="flutter_bootstrap.js" async></script>
 </head>
 
 <body>
   <style>
-    
     body {
       background-color: #0A0A0A;
       height: 100vh;
@@ -142,18 +141,17 @@
     }
 
     window.addEventListener('load', function (ev) {
+      { { flutter_js } }
+      { { flutter_build_config } }
       var loaderContent = document.querySelector('#loader-content');
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        }
-      }).then(function (engineInitializer) {
-        return engineInitializer.initializeEngine();
-      }).then(async function (appRunner) {
-        loaderContent.style.opacity = "0";
-        await delay(400);
-        await appRunner.runApp();
+      _flutter.loader.load({
+        onEntrypointLoaded: async function (engineInitializer) {
+          loading.textContent = "Initializing engine...";
+          const appRunner = await engineInitializer.initializeEngine();
+          loaderContent.style.opacity = "0";
+          await delay(400);
+          await appRunner.runApp();
+        },
       });
     });
   </script>

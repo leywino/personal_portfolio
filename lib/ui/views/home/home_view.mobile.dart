@@ -44,7 +44,7 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MaterialButton(
-                      color: kcDarkGreyColor,
+                      color: kBlossom,
                       onPressed: viewModel.showDialog,
                       child: const Text(
                         'Show Dialog',
@@ -52,7 +52,7 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
                       ),
                     ),
                     MaterialButton(
-                      color: kcDarkGreyColor,
+                      color: kBlossom,
                       onPressed: viewModel.showBottomSheet,
                       child: const Text(
                         'Show Bottom Sheet',

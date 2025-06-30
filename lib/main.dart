@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_portfolio/extensions/theme_ex.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:personal_portfolio/app/app.bottomsheets.dart';
 import 'package:personal_portfolio/app/app.dialogs.dart';
@@ -23,8 +24,10 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveApp(
       builder: (_) => MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         routerDelegate: stackedRouter.delegate(),
         routeInformationParser: stackedRouter.defaultRouteParser(),
+        theme: context.theme(),
       ),
     ).animate().fadeIn(
           delay: const Duration(milliseconds: 50),

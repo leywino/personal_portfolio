@@ -17,6 +17,7 @@ class HomeViewModel extends BaseViewModel {
     _counter++;
     rebuildUi();
   }
+  
 
   void showDialog() {
     _dialogService.showCustomDialog(

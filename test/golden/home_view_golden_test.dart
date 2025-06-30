@@ -11,9 +11,9 @@ void main() {
   testGoldens('HomeView - default state', (tester) async {
     await loadAppFonts();
 
-    // Set device pixel ratio and size for web
+
     await tester.binding.setSurfaceSize(const Size(1920, 1080));
-    tester.binding.window.devicePixelRatioTestValue = 1.0;
+    tester.view.devicePixelRatio = 1.0;
 
     await tester.pumpWidget(
       const MediaQuery(

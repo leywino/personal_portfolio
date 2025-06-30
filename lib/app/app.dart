@@ -1,7 +1,7 @@
 import 'package:personal_portfolio/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:personal_portfolio/ui/dialogs/info_alert/info_alert_dialog.dart';
 import 'package:personal_portfolio/ui/views/home/home_view.dart';
-import 'package:personal_portfolio/ui/views/startup/startup_view.dart';
+// import 'package:personal_portfolio/ui/views/startup/startup_view.dart';
 import 'package:personal_portfolio/ui/views/unknown/unknown_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -9,8 +9,8 @@ import 'package:stacked_services/stacked_services.dart';
 
 @StackedApp(
   routes: [
-    CustomRoute(page: StartupView, initial: true),
-    CustomRoute(page: HomeView),
+    // CustomRoute(page: StartupView),
+    CustomRoute(page: HomeView, initial: true),
 
     // @stacked-route
     CustomRoute(page: UnknownView, path: '/404'),

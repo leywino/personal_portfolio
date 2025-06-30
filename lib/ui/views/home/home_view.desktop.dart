@@ -1,68 +1,80 @@
+import 'package:flutter/material.dart';
 import 'package:personal_portfolio/ui/common/app_colors.dart';
 import 'package:personal_portfolio/ui/common/app_constants.dart';
+import 'package:personal_portfolio/ui/common/app_strings.dart';
 import 'package:personal_portfolio/ui/common/ui_helpers.dart';
-import 'package:flutter/material.dart';
+import 'package:personal_portfolio/ui/widgets/animated_text_slide_box_transition.dart';
+import 'package:personal_portfolio/ui/widgets/custom_button.dart';
 import 'package:stacked/stacked.dart';
 
 import 'home_viewmodel.dart';
 
-class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
+class HomeViewDesktop extends StatefulWidget {
   const HomeViewDesktop({super.key});
 
   @override
-  Widget build(BuildContext context, HomeViewModel viewModel) {
-    return Scaffold(
-      body: Center(
-        child: SizedBox(
-          width: kdDesktopMaxContentWidth,
-          height: kdDesktopMaxContentHeight,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              verticalSpaceLarge,
-              Column(
+  State<HomeViewDesktop> createState() => _HomeViewDesktopState();
+}
+
+class _HomeViewDesktopState extends State<HomeViewDesktop>
+    with TickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: duration3000,
+    )..forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ViewModelBuilder<HomeViewModel>.reactive(
+      viewModelBuilder: () => HomeViewModel(),
+      builder: (context, viewModel, child) {
+        return Scaffold(
+          body: Center(
+            child: SizedBox(
+              width: kdDesktopMaxContentWidth,
+              height: kdDesktopMaxContentHeight,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Hello, DESKTOP UI!',
-                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(ksHiMyNameIs,
+                          style: Theme.of(context).textTheme.displayMedium),
+                      horizontalSpaceMassive,
+                      AnimatedTextSlideBoxTransition(
+                        boxColor: kWhite,
+                        controller: _controller,
+                        coverColor: Theme.of(context).scaffoldBackgroundColor,
+                        text: ksRealName,
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .displayMedium
+                            ?.copyWith(
+                                fontWeight: FontWeight.bold, color: kCoralPink),
+                      ),
+                    ],
                   ),
-                  verticalSpaceMedium,
-                  MaterialButton(
-                    color: Colors.black,
-                    onPressed: viewModel.incrementCounter,
-                    child: Text(
-                      viewModel.counterLabel,
-                      style: const TextStyle(color: Colors.white),
-                    ),
+                  Text("$ksIamA $ksFlutterDev",
+                      style: Theme.of(context).textTheme.displayMedium),
+                  verticalSpaceLarge,
+                  CustomButton(
+                    onTap: () {},
+                    text: "Know More",
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  MaterialButton(
-                    color: kcDarkGreyColor,
-                    onPressed: viewModel.showDialog,
-                    child: const Text(
-                      'Show Dialog',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  MaterialButton(
-                    color: kcDarkGreyColor,
-                    onPressed: viewModel.showBottomSheet,
-                    child: const Text(
-                      'Show Bottom Sheet',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
