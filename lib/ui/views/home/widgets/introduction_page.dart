@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:personal_portfolio/app/app.dart';
-import 'package:personal_portfolio/app/app.router.dart';
 import 'package:personal_portfolio/ui/common/constant_sizes.dart';
 import 'package:personal_portfolio/ui/common/constant_strings.dart';
 import 'package:personal_portfolio/ui/common/constants.dart';
@@ -18,10 +16,20 @@ class IntroductionPage extends StatelessWidget {
 
   final HomeViewModel _viewModel;
 
+  goToAboutMe(BuildContext context) {
+    if (_viewModel.scrollController != null) {
+      _viewModel.scrollController!.animateTo(
+        screenHeight(context),
+        duration: duration500,
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final button = CustomButton(
-      onTap: () => stackedRouter.navigateNamed(Routes.unknownView),
+      onTap: () => goToAboutMe(context),
       text: ksKnowMore,
     );
     var deviceType = getDeviceType(MediaQuery.of(context).size);

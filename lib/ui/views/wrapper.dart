@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/app/app.dart';
 import 'package:personal_portfolio/app/app.router.dart';

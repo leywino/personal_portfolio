@@ -40,6 +40,7 @@ class _HomeViewTabletState extends State<HomeViewTablet>
       builder: (context, viewModel, child) {
         return Scaffold(
           body: SingleChildScrollView(
+            controller: _viewModel.scrollController,
             child: SizedBox(
               width: context.screenWidth,
               child: Column(

@@ -39,7 +39,7 @@ class _HomeViewDesktopState extends State<HomeViewDesktop>
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) {
         return Scaffold(
-          body: SingleChildScrollView(
+          body: SingleChildScrollView(controller: _viewModel.scrollController,
             child: SizedBox(
               width: context.screenWidth,
               child: Column(

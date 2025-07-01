@@ -1,8 +1,9 @@
-import 'package:flutter/animation.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeViewModel extends BaseViewModel {
   AnimationController? controller;
+  ScrollController? scrollController;
 
   int _counter = 0;
   bool _isDisposed = false;
@@ -15,6 +16,7 @@ class HomeViewModel extends BaseViewModel {
       vsync: ticker,
       duration: const Duration(seconds: 2),
     )..forward();
+    scrollController = ScrollController();
   }
 
   void incrementCounter() {
@@ -26,6 +28,7 @@ class HomeViewModel extends BaseViewModel {
   void dispose() {
     if (_isDisposed) return;
     controller?.dispose();
+    scrollController?.dispose();
     super.dispose();
   }
 }
