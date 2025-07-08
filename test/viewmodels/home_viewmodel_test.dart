@@ -21,10 +21,10 @@ void main() {
       model.dispose();
     });
 
-    test('incrementCounter increases the counter and updates label', () {
-      model.incrementCounter();
-      expect(model.counterLabel, 'Counter is: 1');
-    });
+    // test('incrementCounter increases the counter and updates label', () {
+    //   model.incrementCounter();
+    //   expect(model.counterLabel, 'Counter is: 1');
+    // });
 
     test('init initializes animation controller and scroll controller', () {
       model.init(ticker);

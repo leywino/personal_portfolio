@@ -26,11 +26,6 @@ class _HomeViewMobileState extends State<HomeViewMobile>
     _viewModel.init(this);
   }
 
-  @override
-  void dispose() {
-    _viewModel.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -17,13 +17,11 @@ class IntroductionPage extends StatelessWidget {
   final HomeViewModel _viewModel;
 
   goToAboutMe(BuildContext context) {
-    if (_viewModel.scrollController != null) {
-      _viewModel.scrollController!.animateTo(
-        screenHeight(context),
-        duration: duration500,
-        curve: Curves.easeInOut,
-      );
-    }
+    _viewModel.scrollController!.animateTo(
+      screenHeight(context),
+      duration: duration500,
+      curve: Curves.easeInOut,
+    );
   }
 
   @override

@@ -27,12 +27,6 @@ class _HomeViewDesktopState extends State<HomeViewDesktop>
   }
 
   @override
-  void dispose() {
-    _viewModel.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     log('rebuild desktop');
     return ViewModelBuilder<HomeViewModel>.reactive(

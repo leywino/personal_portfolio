@@ -5,6 +5,7 @@ import 'package:personal_portfolio/ui/common/constant_strings.dart';
 import 'package:personal_portfolio/ui/views/home/home_viewmodel.dart';
 import 'package:personal_portfolio/ui/widgets/animated_text_slide_box_transition.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class IntroducingNameWidget extends StatelessWidget {
   const IntroducingNameWidget({
@@ -21,11 +22,25 @@ class IntroducingNameWidget extends StatelessWidget {
     }
 
     final children = [
-      Text(ksHiMyNameIs,
-          style: getValueForScreenType<TextStyle>(
-              context: context,
-              desktop: Theme.of(context).textTheme.displayMedium!,
-              mobile: Theme.of(context).textTheme.displaySmall!)),
+      VisibilityDetector(
+        key: const ValueKey("introducing_name_widget"),
+        onVisibilityChanged: (info) {
+          if (!context.mounted) return;
+          if (info.visibleFraction > 0.3) {
+            _viewModel.controller!.forward();
+          } else {
+            if (_viewModel.controller!.isCompleted ||
+                _viewModel.controller!.value == 1.0) {
+              _viewModel.controller!.reset();
+            }
+          }
+        },
+        child: Text(ksHiMyNameIs,
+            style: getValueForScreenType<TextStyle>(
+                context: context,
+                desktop: Theme.of(context).textTheme.displayMedium!,
+                mobile: Theme.of(context).textTheme.displaySmall!)),
+      ),
       horizontalSpaceMassive,
       AnimatedTextSlideBoxTransition(
         boxColor: kWhite,

@@ -27,12 +27,6 @@ class _HomeViewTabletState extends State<HomeViewTablet>
   }
 
   @override
-  void dispose() {
-    _viewModel.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     log('rebuild tablet');
     return ViewModelBuilder<HomeViewModel>.reactive(
