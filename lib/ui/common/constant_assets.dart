@@ -1,22 +1,22 @@
 const String basePath = "assets/images";
 const String kaLogo = "$basePath/logo.png";
 
-const String vanGoghPath = "/van_gogh";
+const String zeppelinPath = "/led_zeppelin";
 
-const String kaStarryNight = "$basePath$vanGoghPath/the-starry-night.jpg";
-const String kaIrises = "$basePath$vanGoghPath/irises.jpg";
-const String kaBlossom = "$basePath$vanGoghPath/blossom.jpg";
-const String kaHarvest = "$basePath$vanGoghPath/the-harvest.jpg";
-const String kaPotatoEaters = "$basePath$vanGoghPath/the-potato-eaters.jpg";
-const String kaCypress = "$basePath$vanGoghPath/wheat-field-with-cypresses.jpg";
+const String kaLedZeppelin1 = "$basePath$zeppelinPath/led_zeppelin_1.webp";
+const String kaLedZeppelin2 = "$basePath$zeppelinPath/led_zeppelin_2.webp";
+const String kaLedZeppelin3 = "$basePath$zeppelinPath/led_zeppelin_3.webp";
+const String kaLedZeppelin4 = "$basePath$zeppelinPath/led_zeppelin_4.webp";
+const String kaLedZeppelin6 = "$basePath$zeppelinPath/led_zeppelin_6.webp";
+const String kaLedZeppelin7 = "$basePath$zeppelinPath/led_zeppelin_7.webp";
 
 const kaMenu = [
-  kaStarryNight,
-  kaIrises,
-  kaBlossom,
-  kaHarvest,
-  kaPotatoEaters,
-  kaCypress,
+  kaLedZeppelin1,
+  kaLedZeppelin2,
+  kaLedZeppelin3,
+  kaLedZeppelin4,
+  kaLedZeppelin6,
+  kaLedZeppelin7,
 ];
 
 const String toolPath = "/tools";

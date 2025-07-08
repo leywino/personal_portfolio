@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/extensions/extensions.dart';
 import 'package:personal_portfolio/ui/views/home/sections/about_me_section.dart';
+import 'package:personal_portfolio/ui/views/home/sections/footer_section.dart';
 import 'package:personal_portfolio/ui/views/home/sections/intro_section.dart';
 import 'package:stacked/stacked.dart';
 
@@ -41,7 +42,7 @@ class _HomeViewTabletState extends State<HomeViewTablet>
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   IntroSection(viewModel: _viewModel),
-                  const AboutMeSection(),
+                  const AboutMeSection(),         const FooterSection(),
                 ],
               ),
             ),

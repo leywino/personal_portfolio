@@ -41,9 +41,7 @@ class IntroSection extends StatelessWidget {
         width: deviceType == DeviceScreenType.desktop
             ? kdDesktopMaxContentWidth
             : screenWidth(context),
-        height: deviceType == DeviceScreenType.desktop
-            ? kdDesktopMaxContentHeight
-            : screenHeight(context),
+        height: screenHeight(context),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,

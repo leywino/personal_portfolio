@@ -2,7 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/extensions/extensions.dart';
+import 'package:personal_portfolio/ui/common/constants.dart';
 import 'package:personal_portfolio/ui/views/home/sections/about_me_section.dart';
+import 'package:personal_portfolio/ui/views/home/sections/footer_section.dart';
 import 'package:personal_portfolio/ui/views/home/sections/intro_section.dart';
 import 'package:stacked/stacked.dart';
 
@@ -35,7 +37,12 @@ class _HomeViewDesktopState extends State<HomeViewDesktop>
         return Scaffold(
           body: <Widget>[
             IntroSection(viewModel: _viewModel),
+            Divider(
+              color: kWhite,
+              height: 2,
+            ),
             const AboutMeSection(),
+            const FooterSection(),
           ]
               .addColumn(mainAxisAlignment: MainAxisAlignment.center)
               .addSizedBox(width: context.screenWidth)

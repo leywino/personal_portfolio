@@ -24,7 +24,7 @@ class IntroName extends StatelessWidget {
             tablet: Theme.of(context)
                 .textTheme
                 .displaySmall!
-                .copyWith(fontSize: 32)),
+                .copyWith(fontSize: screenWidth(context)*0.044)),
       ),
       horizontalSpaceMassive,
       AnimatedTextSlideBoxTransition(
@@ -43,7 +43,7 @@ class IntroName extends StatelessWidget {
                 .displaySmall!
                 .copyWith(fontWeight: FontWeight.bold, color: kCoralPink),
             tablet: Theme.of(context).textTheme.displaySmall!.copyWith(
-                fontWeight: FontWeight.bold, color: kCoralPink, fontSize: 32)),
+                fontWeight: FontWeight.bold, color: kCoralPink, fontSize: screenWidth(context)*0.044)),
       ),
     ];
 

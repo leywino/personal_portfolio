@@ -41,5 +41,5 @@ flutter:
           weight: 700
 
   assets:
-    - assets/images/van_gogh/
+    - assets/images/led_zeppelin/
     - assets/images/

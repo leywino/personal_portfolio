@@ -15,8 +15,10 @@ class IntroJob extends StatelessWidget {
           desktop: Theme.of(context).textTheme.displayMedium!,
           mobile:
               Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 22),
-          tablet:
-              Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 32)),
+          tablet: Theme.of(context)
+              .textTheme
+              .displaySmall!
+              .copyWith(fontSize: screenWidth(context) * 0.044)),
       textAlign: TextAlign.start,
     );
   }
