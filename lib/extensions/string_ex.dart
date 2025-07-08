@@ -15,22 +15,27 @@ extension StringEx on String {
     return textPainter.size;
   }
 
+  String removeAssetPrefix() {
+    return replaceAll("assets/", "");
+  }
+
   String prefixZero() {
     return '0$this';
   }
 
-  String prefixHash(){
+  String prefixHash() {
     return """#   $this""";
   }
-  String prefixDash(){
+
+  String prefixDash() {
     return """-   $this""";
   }
 
-  String prefixLink(){
+  String prefixLink() {
     return """🔗   $this""";
   }
 
-  String prefixSlash(){
+  String prefixSlash() {
     return """/   $this""";
   }
 

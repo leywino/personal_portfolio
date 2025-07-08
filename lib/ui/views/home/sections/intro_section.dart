@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:personal_portfolio/extensions/widget_ex.dart';
 
 import 'package:personal_portfolio/ui/common/constants.dart';
 import 'package:personal_portfolio/ui/views/home/home_viewmodel.dart';
 import 'package:personal_portfolio/ui/views/home/widgets/intro_job.dart';
 import 'package:personal_portfolio/ui/views/home/widgets/intro_name.dart';
 import 'package:personal_portfolio/ui/views/home/widgets/intro_socials.dart';
+import 'package:personal_portfolio/ui/views/home/widgets/intro_tools.dart';
 import 'package:personal_portfolio/ui/widgets/custom_button.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -36,30 +38,37 @@ class IntroSection extends StatelessWidget {
     }
 
     return SizedBox(
-      width: deviceType == DeviceScreenType.desktop
-          ? kdDesktopMaxContentWidth
-          : screenWidth(context),
-      height: deviceType == DeviceScreenType.desktop
-          ? kdDesktopMaxContentHeight
-          : screenHeight(context),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: isLessThan1300()
-            ? CrossAxisAlignment.center
-            : CrossAxisAlignment.start,
-        children: [
-          IntroName(viewModel: _viewModel),
-          if (deviceType == DeviceScreenType.mobile) verticalSpaceLarge,
-          const IntroJob(),
-          verticalSpaceLarge,
-          ScreenTypeLayout.builder(
-            desktop: (_) => button,
-            mobile: (_) => Center(child: button),
+        width: deviceType == DeviceScreenType.desktop
+            ? kdDesktopMaxContentWidth
+            : screenWidth(context),
+        height: deviceType == DeviceScreenType.desktop
+            ? kdDesktopMaxContentHeight
+            : screenHeight(context),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            IntroName(viewModel: _viewModel),
+            if (deviceType == DeviceScreenType.mobile) verticalSpaceLarge,
+            const IntroJob(),
+            verticalSpaceLarge,
+            button,
+            verticalSpaceMassive,
+            IntroSocials(viewModel: _viewModel),
+            verticalSpaceMassive,
+            const IntroTools()
+          ],
+        ).addPadding(
+          edgeInsets: getValueForScreenType<EdgeInsetsGeometry>(
+            context: context,
+            mobile: EdgeInsetsGeometry.only(
+              left: screenWidth(context) * 0.05,
+            ),
+            tablet: EdgeInsetsGeometry.only(left: screenWidth(context) * 0.1),
+            desktop: isLessThan1300()
+                ? EdgeInsetsGeometry.only(left: screenWidth(context) * 0.075)
+                : EdgeInsets.zero,
           ),
-          verticalSpaceMassive,
-          IntroSocials(viewModel: _viewModel),
-        ],
-      ),
-    );
+        ));
   }
 }

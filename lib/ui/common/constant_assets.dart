@@ -1,4 +1,5 @@
 const String basePath = "assets/images";
+const String kaLogo = "$basePath/logo.png";
 
 const String vanGoghPath = "/van_gogh";
 
@@ -9,8 +10,6 @@ const String kaHarvest = "$basePath$vanGoghPath/the-harvest.jpg";
 const String kaPotatoEaters = "$basePath$vanGoghPath/the-potato-eaters.jpg";
 const String kaCypress = "$basePath$vanGoghPath/wheat-field-with-cypresses.jpg";
 
-const String kaLogo = "$basePath/logo.png";
-
 const kaMenu = [
   kaStarryNight,
   kaIrises,
@@ -19,3 +18,10 @@ const kaMenu = [
   kaPotatoEaters,
   kaCypress,
 ];
+
+const String toolPath = "/tools";
+
+const String kaDart = "$basePath$toolPath/dart.svg";
+const String kaFlutter = "$basePath$toolPath/flutter.svg";
+const String kaPython = "$basePath$toolPath/python.svg";
+const String kaKotlin = "$basePath$toolPath/kotlin.svg";

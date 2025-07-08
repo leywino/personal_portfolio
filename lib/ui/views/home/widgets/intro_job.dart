@@ -14,14 +14,10 @@ class IntroJob extends StatelessWidget {
           context: context,
           desktop: Theme.of(context).textTheme.displayMedium!,
           mobile:
-              Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 24),
+              Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 22),
           tablet:
-              Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 28)),
-      textAlign: getValueForScreenType<TextAlign>(
-        context: context,
-        desktop: TextAlign.start,
-        mobile: TextAlign.center,
-      ),
+              Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 32)),
+      textAlign: TextAlign.start,
     );
   }
 }

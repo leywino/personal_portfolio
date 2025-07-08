@@ -52,8 +52,9 @@ class _CustomButtonState extends State<CustomButton> {
 
     final padding = getValueForScreenType<EdgeInsets>(
       context: context,
-      desktop: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-      mobile: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      desktop: const EdgeInsets.symmetric(horizontal: 45, vertical: 8),
+      tablet: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+      mobile: const EdgeInsets.symmetric(horizontal: 21, vertical: 5),
     );
 
     return MouseRegion(
