@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/extensions/extensions.dart';
-import 'package:personal_portfolio/ui/common/constant_colors.dart';
-import 'package:personal_portfolio/ui/common/constant_sizes.dart';
-
+import 'package:personal_portfolio/ui/common/constants.dart';
 
 class VanGoghImage extends StatelessWidget {
   VanGoghImage({

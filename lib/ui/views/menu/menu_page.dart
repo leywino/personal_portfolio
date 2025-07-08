@@ -1,10 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/extensions/extensions.dart';
-import 'package:personal_portfolio/ui/common/constant_colors.dart';
-import 'package:personal_portfolio/ui/common/constant_assets.dart';
-import 'package:personal_portfolio/ui/common/constant_strings.dart';
-import 'package:personal_portfolio/ui/common/constant_sizes.dart';
+import 'package:personal_portfolio/ui/common/constants.dart';
 import 'package:personal_portfolio/ui/widgets/menu_item.dart';
 import 'package:personal_portfolio/ui/widgets/vangogh_image.dart';
 
@@ -34,7 +31,6 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> with TickerProviderStateMixin {
   late AnimationController _boxController;
   late AnimationController _colorBoxController;
-
 
   List<bool> _menuItemHover = List.filled(ksMenu.length, false);
   final List<double> _menuItemListPositionY = List.filled(ksMenu.length, 0.0);

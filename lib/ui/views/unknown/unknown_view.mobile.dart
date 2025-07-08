@@ -1,8 +1,6 @@
-import 'package:personal_portfolio/ui/common/constant_colors.dart';
-import 'package:personal_portfolio/ui/common/constant_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
+import 'package:personal_portfolio/ui/common/constants.dart';
 import 'unknown_viewmodel.dart';
 
 class UnknownViewMobile extends ViewModelWidget<UnknownViewModel> {

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_portfolio/ui/common/constant_colors.dart';
-import 'package:personal_portfolio/ui/common/constant_sizes.dart';
-import 'package:personal_portfolio/ui/common/constant_strings.dart';
+import 'package:personal_portfolio/ui/common/constants.dart';
 import 'package:personal_portfolio/ui/views/home/home_viewmodel.dart';
 import 'package:personal_portfolio/ui/widgets/animated_text_slide_box_transition.dart';
 import 'package:responsive_builder/responsive_builder.dart';

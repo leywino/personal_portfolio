@@ -98,6 +98,9 @@ const SizedBox verticalSpaceLarge = SizedBox(height: _large);
 const SizedBox verticalSpaceMassive = SizedBox(height: _massive);
 const SizedBox verticalSpaceEnormous = SizedBox(height: _enormous);
 
+const double kdDesktopMaxContentWidth = 1150;
+const double kdDesktopMaxContentHeight = 750;
+
 SizedBox customSpace({double? w, double? h}) => SizedBox(
       width: w ?? 0,
       height: h ?? 0,

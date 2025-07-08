@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:personal_portfolio/ui/common/constant_colors.dart';
-import 'package:personal_portfolio/ui/common/constant_sizes.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-
+import 'package:personal_portfolio/ui/common/constants.dart';
 import 'info_alert_dialog_model.dart';
 
 const double _graphicSize = 60;

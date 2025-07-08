@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/extensions/extensions.dart';
-import 'package:personal_portfolio/ui/views/home/widgets/about_me_page.dart';
-import 'package:personal_portfolio/ui/views/home/widgets/introduction_page.dart';
+import 'package:personal_portfolio/ui/views/home/sections/about_me_section.dart';
+import 'package:personal_portfolio/ui/views/home/sections/intro_section.dart';
 import 'package:stacked/stacked.dart';
 
 import 'home_viewmodel.dart';

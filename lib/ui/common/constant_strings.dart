@@ -16,3 +16,10 @@ const String ksNickName = "Leywino";
 const String ksIamA = "I am a";
 const String ksFlutterDev = "Flutter Developer";
 const String ksKnowMore = "Know More";
+const String ksAboutMe = "About Me";
+const String ksAboutMeDescription = '''
+I’m a passionate Flutter developer who loves building responsive and performant cross-platform apps. I enjoy crafting user-friendly experiences and writing clean, maintainable code. My portfolio reflects my commitment to quality, minimalism, and creativity.
+
+Whether it's a mobile app, a tablet experience, or a polished web view — I strive for pixel-perfect interfaces and efficient architectures using modern tools like Bloc and modular design patterns.
+
+In addition to coding, I enjoy open-source contributions, design system thinking, and pushing the boundaries of what Flutter can do across devices.''';

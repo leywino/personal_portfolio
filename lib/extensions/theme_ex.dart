@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_portfolio/ui/common/constant_colors.dart';
-import 'package:personal_portfolio/ui/common/constant_sizes.dart';
+import 'package:personal_portfolio/ui/common/constants.dart';
 
 const bold = FontWeight.w700;
 const semiBold = FontWeight.w600;

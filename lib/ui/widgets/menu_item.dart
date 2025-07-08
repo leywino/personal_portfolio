@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/extensions/extensions.dart';
-import 'package:personal_portfolio/ui/common/constant_colors.dart';
-import 'package:personal_portfolio/ui/common/constant_sizes.dart';
-
+import 'package:personal_portfolio/ui/common/constants.dart';
 
 class MenuItem extends StatelessWidget {
   const MenuItem({
@@ -21,9 +19,9 @@ class MenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle? menuLabelStyle = context.adaptive<TextStyle?>(
-        Theme.of(context).textTheme.bodyLarge,
-        Theme.of(context).textTheme.titleMedium,
-        // md: Theme.of(context).textTheme.titleSmall,
+      Theme.of(context).textTheme.bodyLarge,
+      Theme.of(context).textTheme.titleMedium,
+      // md: Theme.of(context).textTheme.titleSmall,
     );
     TextStyle? hoverMenuLabelStyle = context.adaptive<TextStyle?>(
       Theme.of(context).textTheme.titleSmall,

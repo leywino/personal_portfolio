@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_portfolio/ui/common/constant_sizes.dart';
-
-
+import 'package:personal_portfolio/ui/common/constants.dart';
 class AnimatedAppBar extends PreferredSize {
   const AnimatedAppBar({
     super.key,
@@ -9,8 +7,7 @@ class AnimatedAppBar extends PreferredSize {
     required this.animation,
   }) : super(
           child: appBar,
-          preferredSize:
-              const Size.fromHeight(s100),
+          preferredSize: const Size.fromHeight(s100),
         );
 
   final Widget appBar;

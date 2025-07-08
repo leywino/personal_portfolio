@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:personal_portfolio/ui/common/constant_sizes.dart';
-import 'package:personal_portfolio/ui/common/constant_strings.dart';
+
 import 'package:personal_portfolio/ui/common/constants.dart';
 import 'package:personal_portfolio/ui/views/home/home_viewmodel.dart';
-import 'package:personal_portfolio/ui/views/home/widgets/introducing_job_widget.dart';
-import 'package:personal_portfolio/ui/views/home/widgets/introducing_name_widget.dart';
+import 'package:personal_portfolio/ui/views/home/widgets/intro_job.dart';
+import 'package:personal_portfolio/ui/views/home/widgets/intro_name.dart';
 import 'package:personal_portfolio/ui/widgets/custom_button.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 

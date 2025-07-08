@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:personal_portfolio/ui/common/constant_strings.dart';
+
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:personal_portfolio/ui/common/constants.dart';
 
 class IntroducingJobWidget extends StatelessWidget {
   const IntroducingJobWidget({super.key});
