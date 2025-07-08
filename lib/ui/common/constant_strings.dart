@@ -23,3 +23,13 @@ I’m a passionate Flutter developer who loves building responsive and performan
 Whether it's a mobile app, a tablet experience, or a polished web view — I strive for pixel-perfect interfaces and efficient architectures using modern tools like Bloc and modular design patterns.
 
 In addition to coding, I enjoy open-source contributions, design system thinking, and pushing the boundaries of what Flutter can do across devices.''';
+
+const String ksGithub = "Github";
+const String ksGithubLink = "https://github.com/leywino";
+const String ksLinkedIn = "LinkedIn";
+const String ksLinkedInLink = "https://www.linkedin.com/in/muhammadarshadk";
+const String ksDiscord = "Discord";
+const String ksDiscordLink = "https://discordapp.com/users/876696369094598676";
+const String ksSlash = "/";
+const String ksVerticalBar = "|";
+const String ksViewProjects = "View Projects";

@@ -43,6 +43,15 @@ extension WidgetEx on Widget {
     );
   }
 
+  Widget addSingleChildScrollView({
+    ScrollController? controller,
+  }) {
+    return SingleChildScrollView(
+      controller: controller,
+      child: this,
+    );
+  }
+
   Widget addContainer({
     double? width,
     double? height,

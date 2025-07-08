@@ -4,11 +4,12 @@ import 'package:personal_portfolio/ui/common/constants.dart';
 import 'package:personal_portfolio/ui/views/home/home_viewmodel.dart';
 import 'package:personal_portfolio/ui/views/home/widgets/intro_job.dart';
 import 'package:personal_portfolio/ui/views/home/widgets/intro_name.dart';
+import 'package:personal_portfolio/ui/views/home/widgets/intro_socials.dart';
 import 'package:personal_portfolio/ui/widgets/custom_button.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class IntroductionPage extends StatelessWidget {
-  const IntroductionPage({
+class IntroSection extends StatelessWidget {
+  const IntroSection({
     super.key,
     required HomeViewModel viewModel,
   }) : _viewModel = viewModel;
@@ -47,14 +48,16 @@ class IntroductionPage extends StatelessWidget {
             ? CrossAxisAlignment.center
             : CrossAxisAlignment.start,
         children: [
-          IntroducingNameWidget(viewModel: _viewModel),
+          IntroName(viewModel: _viewModel),
           if (deviceType == DeviceScreenType.mobile) verticalSpaceLarge,
-          const IntroducingJobWidget(),
+          const IntroJob(),
           verticalSpaceLarge,
           ScreenTypeLayout.builder(
             desktop: (_) => button,
             mobile: (_) => Center(child: button),
           ),
+          verticalSpaceMassive,
+          IntroSocials(viewModel: _viewModel),
         ],
       ),
     );

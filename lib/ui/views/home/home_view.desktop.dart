@@ -33,18 +33,14 @@ class _HomeViewDesktopState extends State<HomeViewDesktop>
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) {
         return Scaffold(
-          body: SingleChildScrollView(controller: _viewModel.scrollController,
-            child: SizedBox(
-              width: context.screenWidth,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  IntroductionPage(viewModel: _viewModel),
-                  const AboutMePage(),
-                ],
-              ),
-            ),
-          ),
+          body: <Widget>[
+            IntroSection(viewModel: _viewModel),
+            const AboutMeSection(),
+          ]
+              .addColumn(mainAxisAlignment: MainAxisAlignment.center)
+              .addSizedBox(width: context.screenWidth)
+              .addSingleChildScrollView(
+                  controller: _viewModel.scrollController),
         );
       },
     );

@@ -9,6 +9,8 @@ const String kaHarvest = "$basePath$vanGoghPath/the-harvest.jpg";
 const String kaPotatoEaters = "$basePath$vanGoghPath/the-potato-eaters.jpg";
 const String kaCypress = "$basePath$vanGoghPath/wheat-field-with-cypresses.jpg";
 
+const String kaLogo = "$basePath/logo.png";
+
 const kaMenu = [
   kaStarryNight,
   kaIrises,

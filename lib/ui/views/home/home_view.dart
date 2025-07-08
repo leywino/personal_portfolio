@@ -14,8 +14,12 @@ class HomeView extends StackedView<HomeViewModel> {
   final bool refresh;
 
   @override
+  bool get reactive => true;
+
+  @override
   Widget builder(BuildContext context, HomeViewModel viewModel, Widget? child) {
     return Wrapper(
+      onCallBack: () {},
       page: ScreenTypeLayout.builder(
         mobile: (_) => const HomeViewMobile(),
         tablet: (_) => const HomeViewTablet(),

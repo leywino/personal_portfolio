@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:personal_portfolio/app/app.dart';
+import 'package:personal_portfolio/app/app.router.dart';
 
 import 'package:personal_portfolio/ui/common/constants.dart';
+import 'package:personal_portfolio/ui/widgets/custom_button.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class AboutMePage extends StatelessWidget {
-  const AboutMePage({super.key});
+class AboutMeSection extends StatelessWidget {
+  const AboutMeSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,17 @@ class AboutMePage extends StatelessWidget {
                 : TextAlign.center,
           ),
           verticalSpaceLarge,
+          CustomButton(
+            onTap: () {
+              stackedRouter.replace(getRouteWithRouteName(Routes.projectsView));
+            },
+            text: ksViewProjects,
+            defaultBorderColor: kWhite,
+            defaultBoxShadowColor: kWhite,
+            defaultTextColor: kWhite,
+            hoverBackgroundColor: kWhite,
+            hoverTextColor: kPrimary,
+          )
         ],
       ),
     );

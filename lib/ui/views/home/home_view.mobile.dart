@@ -26,7 +26,6 @@ class _HomeViewMobileState extends State<HomeViewMobile>
     _viewModel.init(this);
   }
 
-
   @override
   Widget build(BuildContext context) {
     log('rebuild mobile');
@@ -34,14 +33,15 @@ class _HomeViewMobileState extends State<HomeViewMobile>
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) {
         return Scaffold(
-          body: SingleChildScrollView(controller: _viewModel.scrollController,
+          body: SingleChildScrollView(
+            controller: _viewModel.scrollController,
             child: SizedBox(
               width: context.screenWidth,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  IntroductionPage(viewModel: _viewModel),
-                  const AboutMePage(),
+                  IntroSection(viewModel: _viewModel),
+                  const AboutMeSection(),
                 ],
               ),
             ),

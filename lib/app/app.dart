@@ -1,6 +1,8 @@
+import 'package:personal_portfolio/app/app.router.dart';
 import 'package:personal_portfolio/ui/views/home/home_view.dart';
 import 'package:personal_portfolio/ui/views/projects/projects_view.dart';
 import 'package:personal_portfolio/ui/views/unknown/unknown_view.dart';
+import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -22,4 +24,20 @@ class Routes {
   static const String home = '/';
   static const String unknownView = '/404';
   static const String projectsView = '/projects';
+}
+
+PageRouteInfo<dynamic> getRouteWithRouteName(String routeName) {
+  switch (routeName) {
+    case Routes.home:
+      return HomeViewRoute();
+
+    case Routes.projectsView:
+      return const ProjectsViewRoute();
+
+    case Routes.unknownView:
+      return const UnknownViewRoute();
+
+    default:
+      return const UnknownViewRoute();
+  }
 }

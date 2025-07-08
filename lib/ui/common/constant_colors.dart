@@ -11,6 +11,7 @@ const Color kTeal = Colors.teal;
 final Color kTeal200 = Colors.teal.shade200;
 const Color kBlossom = Color(0xFF50B7CD);
 final Color kWhite = "#D8D8D8".toColor();
+final Color kWhite50 = "#D8D8D8".toColor().withValues(alpha: 0.5);
 const Color kBlack = Colors.black;
 const Color kBlack12 = Colors.black12;
 const Color kBlack26 = Colors.black26;

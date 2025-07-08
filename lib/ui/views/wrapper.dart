@@ -5,13 +5,15 @@ import 'package:personal_portfolio/extensions/extensions.dart';
 import 'package:personal_portfolio/ui/views/menu/menu_page.dart';
 import 'package:personal_portfolio/ui/widgets/animated_app_bar.dart';
 import 'package:personal_portfolio/ui/widgets/custom_page_transition.dart';
+import 'package:personal_portfolio/ui/widgets/logo.dart';
 import 'package:personal_portfolio/ui/widgets/menu_button.dart';
 import 'package:personal_portfolio/ui/common/constants.dart';
-import 'package:stacked/stacked.dart';
 
 class Wrapper extends StatefulWidget {
-  const Wrapper({Key? key, required this.page}) : super(key: key);
+  const Wrapper({Key? key, required this.page, this.onCallBack})
+      : super(key: key);
   final Widget page;
+  final VoidCallback? onCallBack;
   @override
   State<Wrapper> createState() => _WrapperState();
 }
@@ -86,22 +88,6 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
     }
   }
 
-  PageRouteInfo<dynamic> getRouteWithRouteName(String routeName) {
-    switch (routeName) {
-      case Routes.home:
-        return HomeViewRoute();
-
-      case Routes.projectsView:
-        return const ProjectsViewRoute();
-
-      case Routes.unknownView:
-        return const UnknownViewRoute();
-
-      default:
-        return const UnknownViewRoute();
-    }
-  }
-
   void _handleNavigation(String routeName) {
     _menuController.reverse().then((value) {
       if (_menuController.status == AnimationStatus.dismissed) {
@@ -139,6 +125,7 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
   }
 
   void navigateToHomePage() {
+    widget.onCallBack?.call();
     _loadingController.forward();
     navigate(Routes.home);
   }
@@ -151,9 +138,10 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
       appBar: AnimatedAppBar(
         animation: _appBarController.view,
         appBar: AppBar(
+          iconTheme: const IconThemeData(size: 25),
           leadingWidth: context.adaptive(s40, s70),
           automaticallyImplyLeading: false,
-          leading: buildHomeButton(),
+          title: Logo(onTap: navigateToHomePage),
           actions: [
             MenuButton(
               onPressed: onMenuTapped,
@@ -186,21 +174,6 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         ),
       ].addStack(),
-    );
-  }
-
-  IconButton buildHomeButton() {
-    double size = context.adaptive<double>(
-      s20,
-      s40,
-    );
-    return IconButton(
-      onPressed: navigateToHomePage,
-      icon: Icon(
-        Icons.home,
-        color: kWhite,
-        size: size,
-      ),
     );
   }
 }

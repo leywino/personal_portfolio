@@ -40,8 +40,8 @@ class _HomeViewTabletState extends State<HomeViewTablet>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  IntroductionPage(viewModel: _viewModel),
-                  const AboutMePage(),
+                  IntroSection(viewModel: _viewModel),
+                  const AboutMeSection(),
                 ],
               ),
             ),

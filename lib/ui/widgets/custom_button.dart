@@ -9,6 +9,7 @@ class CustomButton extends StatefulWidget {
   final Color defaultBackgroundColor;
   final Color defaultBorderColor;
   final Color defaultTextColor;
+  final Color defaultBoxShadowColor;
   final Color hoverBackgroundColor;
   final Color hoverTextColor;
   final double scaleOnHover;
@@ -21,9 +22,10 @@ class CustomButton extends StatefulWidget {
     this.defaultBackgroundColor = const Color(0xFF56595B),
     this.defaultBorderColor = const Color(0xFFF4806D),
     this.defaultTextColor = const Color(0xFFF4806D),
+    this.defaultBoxShadowColor = const Color(0xFFF4806D),
     this.hoverBackgroundColor = const Color(0xFFF4806D),
     this.hoverTextColor = const Color(0xFFD8D8D8),
-    this.scaleOnHover = 1.05,
+    this.scaleOnHover = 1.03,
     this.translateYOnHover = -5.0,
   });
 
@@ -71,13 +73,23 @@ class _CustomButtonState extends State<CustomButton> {
                 color: _isHovering
                     ? widget.hoverBackgroundColor
                     : widget.defaultBackgroundColor,
-                borderRadius: BorderRadius.circular(8),
+                // borderRadius: BorderRadius.circular(8),
                 border: Border.all(
                   color: _isHovering
                       ? widget.hoverBackgroundColor
                       : widget.defaultBorderColor,
                   width: 2,
                 ),
+                boxShadow: _isHovering
+                    ? null
+                    : [
+                        BoxShadow(
+                          color: widget.defaultBoxShadowColor,
+                          offset: const Offset(-4, 4),
+                          blurRadius: 0,
+                          spreadRadius: 0,
+                        ),
+                      ],
               ),
               child: Text(
                 widget.text,

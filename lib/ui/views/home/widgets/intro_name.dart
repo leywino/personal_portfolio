@@ -5,8 +5,8 @@ import 'package:personal_portfolio/ui/widgets/animated_text_slide_box_transition
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
-class IntroducingNameWidget extends StatelessWidget {
-  const IntroducingNameWidget({
+class IntroName extends StatelessWidget {
+  const IntroName({
     super.key,
     required HomeViewModel viewModel,
   }) : _viewModel = viewModel;
