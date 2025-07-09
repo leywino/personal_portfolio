@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/extensions/extensions.dart';
 import 'package:personal_portfolio/ui/common/constants.dart';
@@ -26,11 +24,22 @@ class _HomeViewDesktopState extends State<HomeViewDesktop>
     super.initState();
     _viewModel = HomeViewModel();
     _viewModel.init(this);
+    //todo: remove the temp function
+    _tempGoToFooter();
+  }
+
+  _tempGoToFooter() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _viewModel.scrollController!.animateTo(
+        _viewModel.scrollController!.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    log('rebuild desktop');
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) {
@@ -42,11 +51,14 @@ class _HomeViewDesktopState extends State<HomeViewDesktop>
               height: 2,
             ),
             const AboutMeSection(),
-            const FooterSection(),
+            FooterSection(
+              viewModel: _viewModel,
+            ),
           ]
               .addColumn(mainAxisAlignment: MainAxisAlignment.center)
               .addSizedBox(width: context.screenWidth)
-              .addSingleChildScrollView(
+              .addScrollView(
+                  physics: const ClampingScrollPhysics(),
                   controller: _viewModel.scrollController),
         );
       },

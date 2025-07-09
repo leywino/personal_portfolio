@@ -34,20 +34,18 @@ class _HomeViewMobileState extends State<HomeViewMobile>
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) {
         return Scaffold(
-          body: SingleChildScrollView(
-            controller: _viewModel.scrollController,
-            child: SizedBox(
-              width: context.screenWidth,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  IntroSection(viewModel: _viewModel),
-                  const AboutMeSection(),
-                  const FooterSection(),
-                ],
-              ),
+          body: <Widget>[
+            IntroSection(viewModel: _viewModel),
+            const AboutMeSection(),
+            FooterSection(
+              viewModel: _viewModel,
             ),
-          ),
+          ]
+              .addColumn(mainAxisAlignment: MainAxisAlignment.center)
+              .addSizedBox(width: context.screenWidth)
+              .addScrollView(
+                  physics: const ClampingScrollPhysics(),
+                  controller: _viewModel.scrollController),
         );
       },
     );

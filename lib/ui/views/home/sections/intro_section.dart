@@ -37,26 +37,22 @@ class IntroSection extends StatelessWidget {
       return screenWidth(context) < 1300;
     }
 
-    return SizedBox(
-        width: deviceType == DeviceScreenType.desktop
-            ? kdDesktopMaxContentWidth
-            : screenWidth(context),
-        height: screenHeight(context),
-        child: Column(
+    return <Widget>[
+      IntroName(viewModel: _viewModel),
+      if (deviceType == DeviceScreenType.mobile) verticalSpaceLarge,
+      const IntroJob(),
+      verticalSpaceLarge,
+      button,
+      verticalSpaceMassive,
+      IntroSocials(viewModel: _viewModel),
+      verticalSpaceMassive,
+      const IntroTools()
+    ]
+        .addColumn(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            IntroName(viewModel: _viewModel),
-            if (deviceType == DeviceScreenType.mobile) verticalSpaceLarge,
-            const IntroJob(),
-            verticalSpaceLarge,
-            button,
-            verticalSpaceMassive,
-            IntroSocials(viewModel: _viewModel),
-            verticalSpaceMassive,
-            const IntroTools()
-          ],
-        ).addPadding(
+        )
+        .addPadding(
           edgeInsets: getValueForScreenType<EdgeInsetsGeometry>(
             context: context,
             mobile: EdgeInsetsGeometry.only(
@@ -67,6 +63,12 @@ class IntroSection extends StatelessWidget {
                 ? EdgeInsetsGeometry.only(left: screenWidth(context) * 0.075)
                 : EdgeInsets.zero,
           ),
-        ));
+        )
+        .addSizedBox(
+          width: deviceType == DeviceScreenType.desktop
+              ? kdDesktopMaxContentWidth
+              : screenWidth(context),
+          height: screenHeight(context),
+        );
   }
 }

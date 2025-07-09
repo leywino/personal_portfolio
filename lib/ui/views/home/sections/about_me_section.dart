@@ -14,61 +14,60 @@ class AboutMeSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceType = getDeviceType(MediaQuery.of(context).size);
 
-    return SizedBox(
-      width: deviceType == DeviceScreenType.desktop
-          ? kdDesktopMaxContentWidth
-          : screenWidth(context),
-      height: screenHeight(context),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            ksAboutMe,
-            style: getValueForScreenType<TextStyle?>(
-                context: context,
-                mobile: Theme.of(context).textTheme.displaySmall,
-                desktop: Theme.of(context).textTheme.displayMedium),
-            textAlign: deviceType == DeviceScreenType.desktop
-                ? TextAlign.start
-                : TextAlign.center,
-          ),
-          verticalSpaceMedium,
-          Text(
-            ksAboutMeDescription,
-            style: getValueForScreenType<TextStyle?>(
-                context: context,
-                mobile: Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .copyWith(fontSize: 13),
-                tablet: Theme.of(context).textTheme.bodyLarge,
-                desktop: Theme.of(context).textTheme.bodyLarge),
-            textAlign: TextAlign.start,
-          ),
-          verticalSpaceLarge,
-          CustomButton(
-            onTap: () {
-              stackedRouter.replace(getRouteWithRouteName(Routes.projectsView));
-            },
-            text: ksViewProjects,
-            defaultBorderColor: kWhite,
-            defaultBoxShadowColor: kWhite,
-            defaultTextColor: kWhite,
-            hoverBackgroundColor: kWhite,
-            hoverTextColor: kPrimary,
-          )
-        ],
-      ).addPadding(
-        edgeInsets: EdgeInsetsGeometry.all(
-          getValueForScreenType<double>(
+    return <Widget>[
+      Text(
+        ksAboutMe,
+        style: getValueForScreenType<TextStyle?>(
             context: context,
-            mobile: screenWidth(context) * 0.05,
-            tablet: screenWidth(context) * 0.1,
-            desktop: 0,
-          ),
-        ),
+            mobile: Theme.of(context).textTheme.displaySmall,
+            desktop: Theme.of(context).textTheme.displayMedium),
+        textAlign: deviceType == DeviceScreenType.desktop
+            ? TextAlign.start
+            : TextAlign.center,
       ),
-    );
+      verticalSpaceMedium,
+      Text(
+        ksAboutMeDescription,
+        style: getValueForScreenType<TextStyle?>(
+            context: context,
+            mobile:
+                Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 13),
+            tablet: Theme.of(context).textTheme.bodyLarge,
+            desktop: Theme.of(context).textTheme.bodyLarge),
+        textAlign: TextAlign.start,
+      ),
+      verticalSpaceLarge,
+      CustomButton(
+        onTap: () {
+          stackedRouter.replaceNamed(Routes.projectsView);
+        },
+        text: ksViewProjects,
+        defaultBorderColor: kWhite,
+        defaultBoxShadowColor: kWhite,
+        defaultTextColor: kWhite,
+        hoverBackgroundColor: kWhite,
+        hoverTextColor: kPrimary,
+      )
+    ]
+        .addColumn(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+        )
+        .addSizedBox(
+          width: deviceType == DeviceScreenType.desktop
+              ? kdDesktopMaxContentWidth
+              : screenWidth(context),
+          height: screenHeight(context),
+        )
+        .addPadding(
+          edgeInsets: EdgeInsetsGeometry.all(
+            getValueForScreenType<double>(
+              context: context,
+              mobile: screenWidth(context) * 0.05,
+              tablet: screenWidth(context) * 0.1,
+              desktop: 0,
+            ),
+          ),
+        );
   }
 }

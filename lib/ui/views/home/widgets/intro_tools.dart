@@ -10,8 +10,7 @@ class IntroTools extends StatelessWidget {
   Widget build(BuildContext context) {
     const double iconSize = 32;
 
-    return const Row(
-      children: [
+    return const <Widget>[
         SvgIcon(
           assetName: kaDart,
           size: iconSize,
@@ -35,8 +34,7 @@ class IntroTools extends StatelessWidget {
           size: iconSize,
           toolName: "Python",
         ),
-      ],
-    );
+      ].addRow();
   }
 }
 

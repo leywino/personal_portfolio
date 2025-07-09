@@ -115,8 +115,8 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
     _loadingController.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
         await Future.delayed(const Duration(milliseconds: 16));
-
-        stackedRouter.replace(getRouteWithRouteName(routeName));
+        
+        stackedRouter.replaceNamed(routeName);
 
         _loadingController.reset();
         _appBarController.reset();
