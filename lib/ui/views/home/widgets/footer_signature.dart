@@ -31,7 +31,7 @@ class FooterSignature extends StatelessWidget {
             textStyle: Theme.of(context)
                 .textTheme
                 .bodyMedium!
-                .copyWith(fontSize: context.adaptive(8, 12, tablet: 8)),
+                .copyWith(fontSize: context.adaptive(8, 12, 8)),
             boxColor: kLightGray,
             coverColor: kDarkSlate,
           ),
@@ -39,7 +39,7 @@ class FooterSignature extends StatelessWidget {
           Icon(
             Icons.favorite_rounded,
             color: kLightGray,
-            size: context.adaptive(12, 20, tablet: 16),
+            size: context.adaptive(12, 20, 16),
           )
         ].addRow(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +49,7 @@ class FooterSignature extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .bodyMedium!
-                .copyWith(fontSize: context.adaptive(8, 12, tablet: 8))),
+                .copyWith(fontSize: context.adaptive(8, 12, 8))),
         verticalSpaceMedium
       ].addColumn(
           mainAxisSize: MainAxisSize.min,
