@@ -28,7 +28,10 @@ class FooterSignature extends StatelessWidget {
           AnimatedTextSlideBoxTransition(
             controller: textController,
             text: ksMadeWith,
-            textStyle: Theme.of(context).textTheme.bodyMedium,
+            textStyle: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(fontSize: context.adaptive(8, 12, tablet: 8)),
             boxColor: kLightGray,
             coverColor: kDarkSlate,
           ),
@@ -36,11 +39,17 @@ class FooterSignature extends StatelessWidget {
           Icon(
             Icons.favorite_rounded,
             color: kLightGray,
-            size: 20,
+            size: context.adaptive(12, 20, tablet: 16),
           )
-        ].addRow(mainAxisAlignment: MainAxisAlignment.center),
+        ].addRow(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min),
         verticalSpaceTiny,
-        const Text(ksCC),
+        Text(ksCC,
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(fontSize: context.adaptive(8, 12, tablet: 8))),
         verticalSpaceMedium
       ].addColumn(
           mainAxisSize: MainAxisSize.min,

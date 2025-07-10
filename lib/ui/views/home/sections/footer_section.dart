@@ -84,16 +84,50 @@ class _FooterSectionState extends State<FooterSection>
     _textController.reset();
   }
 
-  Widget _buildChildren() {
-    deviceType = getDeviceType(MediaQuery.of(context).size);
-    final isMobile = deviceType == DeviceScreenType.mobile;
-
-    final footerSignature = FooterSignature(
-      scrollToUp: _scrollToUp,
-      textController: _textController,
+  Widget _buildMobileLayout() {
+    return <Widget>[
+      verticalSpaceLarge,
+      const FooterContact(),
+      // const FooterCredits(), // You can enable if needed
+      _buildFooterSignature(),
+    ].addColumn(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
     );
+  }
 
-    final footerContact = <Widget>[
+  Widget _buildTabletNarrowLayout() {
+    return Stack(
+      alignment: Alignment.centerLeft,
+      children: [
+        _buildMainRow(),
+        _buildFooterSignature()
+            .addPadding(edgeInsets: const EdgeInsets.only(left: s16)),
+      ],
+    );
+  }
+
+  Widget _buildDesktopLayout() {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        _buildMainRow(),
+        _buildFooterSignature(),
+      ],
+    );
+  }
+
+  Widget _buildMainRow() {
+    return <Widget>[
+      _buildFooterCTA(),
+      _buildFooterContact(),
+    ].addRow(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+    );
+  }
+
+  Widget _buildFooterContact() {
+    return <Widget>[
       const FooterContact(),
       const FooterCredits(),
     ]
@@ -102,35 +136,34 @@ class _FooterSectionState extends State<FooterSection>
           crossAxisAlignment: CrossAxisAlignment.start,
         )
         .addPadding(edgeInsets: const EdgeInsets.only(right: s16));
+  }
 
-    final footerCTA =
-        FooterCTA(deviceType: deviceType, textController: _textController);
+  Widget _buildFooterCTA() {
+    return FooterCTA(
+      deviceType: deviceType,
+      textController: _textController,
+    );
+  }
+
+  Widget _buildFooterSignature() {
+    return FooterSignature(
+      scrollToUp: _scrollToUp,
+      textController: _textController,
+    );
+  }
+
+  Widget _buildChildren() {
+    deviceType = getDeviceType(MediaQuery.of(context).size);
+    final isMobile = deviceType == DeviceScreenType.mobile;
+    final isTablet = deviceType == DeviceScreenType.tablet;
 
     if (isMobile) {
-      return <Widget>[
-        verticalSpaceLarge,
-        const FooterContact(),
-        // const FooterCredits(),
-        // footerCTA,
-        footerSignature,
-      ].addColumn(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      );
+      return _buildMobileLayout();
+    } else if (isTablet && screenWidth(context) < 760) {
+      return _buildTabletNarrowLayout();
+    } else {
+      return _buildDesktopLayout();
     }
-
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        <Widget>[
-          footerCTA,
-          footerContact,
-        ].addRow(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-        ),
-        footerSignature,
-      ],
-    );
   }
 
   @override

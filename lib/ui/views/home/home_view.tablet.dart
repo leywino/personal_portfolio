@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/extensions/extensions.dart';
 import 'package:personal_portfolio/ui/views/home/sections/about_me_section.dart';
@@ -28,7 +26,6 @@ class _HomeViewTabletState extends State<HomeViewTablet> {
 
   @override
   Widget build(BuildContext context) {
-    log('rebuild tablet');
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) {
