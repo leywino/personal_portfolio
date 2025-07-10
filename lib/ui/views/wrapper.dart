@@ -98,9 +98,10 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
     });
   }
 
-  void navigate(String routeName) {
+  void navigate(String routeName) async {
     final currentRoute = stackedRouter.currentPath;
     if (currentRoute != routeName) {
+      await Future.delayed(duration1000);
       setState(() {
         _isTransitioning = true;
       });
@@ -115,7 +116,7 @@ class _WrapperState extends State<Wrapper> with TickerProviderStateMixin {
     _loadingController.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
         await Future.delayed(const Duration(milliseconds: 16));
-        
+
         stackedRouter.replaceNamed(routeName);
 
         _loadingController.reset();

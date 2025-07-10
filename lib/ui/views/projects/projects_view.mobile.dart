@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_portfolio/ui/views/coming_soon.dart';
 
 class ProjectsViewMobile extends StatefulWidget {
   const ProjectsViewMobile({super.key});
@@ -10,6 +11,6 @@ class ProjectsViewMobile extends StatefulWidget {
 class _ProjectsViewMobileState extends State<ProjectsViewMobile> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const ComingSoon();
   }
 }

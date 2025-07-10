@@ -21,11 +21,11 @@ const String ksFlutterDev = "Flutter Developer";
 const String ksKnowMore = "Know More";
 const String ksAboutMe = "About Me";
 const String ksAboutMeDescription = '''
-I’m a passionate Flutter developer who loves building responsive and performant cross-platform apps. I enjoy crafting user-friendly experiences and writing clean, maintainable code. My portfolio reflects my commitment to quality, minimalism, and creativity.
+I’m a Flutter developer with a strong focus on Android, building clean and responsive apps that feel native and smooth. I enjoy crafting functional user experiences with attention to performance and maintainability.
 
-Whether it's a mobile app, a tablet experience, or a polished web view — I strive for pixel-perfect interfaces and efficient architectures using modern tools like Bloc and modular design patterns.
+While I can build for other platforms, my primary goal is to deliver high-quality Android apps using patterns like Bloc and a modular architecture for scalability and clarity.
 
-In addition to coding, I enjoy open-source contributions, design system thinking, and pushing the boundaries of what Flutter can do across devices.''';
+Outside of app development, I explore open-source projects, contribute translations, and keep improving my skills by experimenting with practical, user-first features.''';
 
 const String ksGithub = "Github";
 const String ksLinkedIn = "LinkedIn";
