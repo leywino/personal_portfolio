@@ -4,12 +4,11 @@ import 'package:personal_portfolio/ui/common/constants.dart';
 import 'package:personal_portfolio/ui/widgets/animated_text_slide_box_transition.dart';
 
 class FooterSignature extends StatelessWidget {
-  const FooterSignature(
-      {super.key,
-      required this.scrollToUp,
-      required this.textController,
-   })
-     ;
+  const FooterSignature({
+    super.key,
+    required this.scrollToUp,
+    required this.textController,
+  });
 
   final Function()? scrollToUp;
   final AnimationController textController;
@@ -24,25 +23,30 @@ class FooterSignature extends StatelessWidget {
           color: kLightGray,
         ),
       ),
-      const Spacer(),
       <Widget>[
-        AnimatedTextSlideBoxTransition(
-          controller: textController,
-          text: ksMadeWith,
-          textStyle: Theme.of(context).textTheme.bodyMedium,
-          boxColor: kLightGray,
-          coverColor: kDarkSlate,
-        ),
-        horizontalSpaceSmall,
-        Icon(
-          Icons.favorite_rounded,
-          color: kLightGray,
-          size: 20,
-        )
-      ].addRow(mainAxisAlignment: MainAxisAlignment.center),
-      verticalSpaceTiny,
-      const Text(ksCC),
-      verticalSpaceMedium,
-    ].addColumn(mainAxisSize: MainAxisSize.max);
+        <Widget>[
+          AnimatedTextSlideBoxTransition(
+            controller: textController,
+            text: ksMadeWith,
+            textStyle: Theme.of(context).textTheme.bodyMedium,
+            boxColor: kLightGray,
+            coverColor: kDarkSlate,
+          ),
+          horizontalSpaceSmall,
+          Icon(
+            Icons.favorite_rounded,
+            color: kLightGray,
+            size: 20,
+          )
+        ].addRow(mainAxisAlignment: MainAxisAlignment.center),
+        verticalSpaceTiny,
+        const Text(ksCC),
+        verticalSpaceMedium
+      ].addColumn(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center),
+    ].addColumn(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween);
   }
 }

@@ -25,7 +25,9 @@ class _FooterSectionState extends State<FooterSection>
   late AnimationController _sliderController;
   late AnimationController _textController;
   final List<Interval> _sliderIntervals = [];
-  final double _footerHeightMultiplier = 0.4;
+  double _footerHeight = 250;
+  bool _isDisposed = false;
+  DeviceScreenType deviceType = DeviceScreenType.desktop;
 
   @override
   void initState() {
@@ -54,14 +56,18 @@ class _FooterSectionState extends State<FooterSection>
 
   @override
   void dispose() {
+    if (_isDisposed) return;
+    _isDisposed = true;
     _textController.dispose();
     _sliderController.dispose();
     super.dispose();
   }
 
   void _startAnimation() async {
+    if (_isDisposed) return;
     _sliderController.forward();
     await Future.delayed(duration1000);
+    if (_isDisposed) return;
     _textController.forward();
   }
 
@@ -79,7 +85,7 @@ class _FooterSectionState extends State<FooterSection>
   }
 
   Widget _buildChildren() {
-    final deviceType = getDeviceType(MediaQuery.of(context).size);
+    deviceType = getDeviceType(MediaQuery.of(context).size);
     final isMobile = deviceType == DeviceScreenType.mobile;
 
     final footerSignature = FooterSignature(
@@ -97,14 +103,19 @@ class _FooterSectionState extends State<FooterSection>
         )
         .addPadding(edgeInsets: const EdgeInsets.only(right: s16));
 
-    final footerCTA = FooterCTA(deviceType: deviceType, textController: _textController);
+    final footerCTA =
+        FooterCTA(deviceType: deviceType, textController: _textController);
 
     if (isMobile) {
       return <Widget>[
-        footerContact,
-        footerCTA,
+        verticalSpaceLarge,
+        const FooterContact(),
+        // const FooterCredits(),
+        // footerCTA,
         footerSignature,
-      ].addColumn();
+      ].addColumn(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      );
     }
 
     return Stack(
@@ -124,6 +135,11 @@ class _FooterSectionState extends State<FooterSection>
 
   @override
   Widget build(BuildContext context) {
+    if (deviceType == DeviceScreenType.tablet) {
+      _footerHeight = screenHeight(context) * 0.3;
+    } else if (deviceType == DeviceScreenType.mobile) {
+      _footerHeight = 270;
+    }
     return VisibilityDetector(
       key: const ValueKey("footer_section"),
       onVisibilityChanged: (info) {
@@ -146,7 +162,7 @@ class _FooterSectionState extends State<FooterSection>
             5,
             (index) => CustomSlider(
               width: screenWidth(context),
-              height: screenHeight(context) * _footerHeightMultiplier,
+              height: _footerHeight,
               animation: _sliderController,
               interval: _sliderIntervals[index],
               color: kDarkSlate,
@@ -157,7 +173,7 @@ class _FooterSectionState extends State<FooterSection>
         ].addStack(),
       ).addContainer(
         color: kLightGray,
-        height: screenHeight(context) * _footerHeightMultiplier,
+        height: _footerHeight,
         width: screenWidth(context),
       ),
     );

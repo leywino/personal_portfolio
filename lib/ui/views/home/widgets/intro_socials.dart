@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/extensions/extensions.dart';
 import 'package:personal_portfolio/ui/common/constants.dart';
-import 'package:personal_portfolio/ui/views/home/home_viewmodel.dart';
 import 'package:personal_portfolio/ui/widgets/animated_hover_link.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class IntroSocials extends StatelessWidget {
   const IntroSocials({
     super.key,
-    required HomeViewModel viewModel,
-  }) : _viewModel = viewModel;
+    required AnimationController animationController,
+  }) : _animationController = animationController;
 
-  final HomeViewModel _viewModel;
+  final AnimationController _animationController;
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +19,18 @@ class IntroSocials extends StatelessWidget {
       onVisibilityChanged: (info) {
         if (!context.mounted) return;
         if (info.visibleFraction > 0.3) {
-          _viewModel.controller!.forward();
+          _animationController.forward();
         } else {
-          if (_viewModel.controller!.isCompleted ||
-              _viewModel.controller!.value == 1.0) {
-            _viewModel.controller!.reset();
+          if (_animationController.isCompleted ||
+              _animationController.value == 1.0) {
+            _animationController.reset();
           }
         }
       },
       child: <Widget>[
         AnimatedHoverLink(
           label: ksGithub,
-          controller: _viewModel.controller!,
+          controller: _animationController,
         ).addInkWell(
           onTap: ksGithubLink.launchWebsite,
         ),
@@ -40,7 +39,7 @@ class IntroSocials extends StatelessWidget {
             ),
         AnimatedHoverLink(
           label: ksLinkedIn,
-          controller: _viewModel.controller!,
+          controller: _animationController,
         ).addInkWell(
           onTap: ksLinkedInLink.launchWebsite,
         ),

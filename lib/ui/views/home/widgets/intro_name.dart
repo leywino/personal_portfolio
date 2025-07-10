@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/ui/common/constants.dart';
-import 'package:personal_portfolio/ui/views/home/home_viewmodel.dart';
 import 'package:personal_portfolio/ui/widgets/animated_text_slide_box_transition.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class IntroName extends StatelessWidget {
   const IntroName({
     super.key,
-    required HomeViewModel viewModel,
-  }) : _viewModel = viewModel;
+    required this. animationController,
+  }) ;
 
-  final HomeViewModel _viewModel;
+  final AnimationController animationController;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class IntroName extends StatelessWidget {
       horizontalSpaceMassive,
       AnimatedTextSlideBoxTransition(
         boxColor: kWhite,
-        controller: _viewModel.controller!,
+        controller: animationController,
         coverColor: Theme.of(context).scaffoldBackgroundColor,
         text: ksRealName,
         textStyle: getValueForScreenType<TextStyle>(

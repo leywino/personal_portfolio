@@ -15,27 +15,14 @@ class HomeViewDesktop extends StatefulWidget {
   State<HomeViewDesktop> createState() => _HomeViewDesktopState();
 }
 
-class _HomeViewDesktopState extends State<HomeViewDesktop>
-    with TickerProviderStateMixin {
+class _HomeViewDesktopState extends State<HomeViewDesktop> {
   late final HomeViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
     _viewModel = HomeViewModel();
-    _viewModel.init(this);
-    //todo: remove the temp function
-    _tempGoToFooter();
-  }
-
-  _tempGoToFooter() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _viewModel.scrollController!.animateTo(
-        _viewModel.scrollController!.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
-      );
-    });
+    _viewModel.init();
   }
 
   @override

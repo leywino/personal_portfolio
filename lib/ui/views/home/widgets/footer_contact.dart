@@ -7,7 +7,6 @@ class FooterContact extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
@@ -19,21 +18,22 @@ class FooterContact extends StatelessWidget {
     return DefaultTextStyle(
       style: kLightGrayTextStyle,
       child: <Widget>[
-        Text(
-          ksContactInfo,
-          style: theme.bodyLarge!.copyWith(color: kLightGray),
-        ),
+        Text(ksContactInfo,
+            style: theme.bodyLarge!.copyWith(
+                color: kLightGray, fontSize: context.adaptive(14, 16))),
         _buildContactRow(
           icon: Icons.mail_outline,
           text: ksEmail,
           onTap: ksEmail.launchEmail,
           theme: theme,
+          context: context,
         ),
         _buildContactRow(
           icon: Icons.phone_outlined,
           text: ksPhone,
           onTap: null,
           theme: theme,
+          context: context,
         ),
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
@@ -49,12 +49,11 @@ class FooterContact extends StatelessWidget {
             }).toList(),
           ),
         ),
-      ]
-          .addColumn(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min)
-          ,
+      ].addColumn(
+          crossAxisAlignment: context.adaptive(
+              CrossAxisAlignment.start, CrossAxisAlignment.start),
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min),
     );
   }
 
@@ -63,6 +62,7 @@ class FooterContact extends StatelessWidget {
     required String text,
     void Function()? onTap,
     required TextTheme theme,
+    required BuildContext context,
   }) {
     final row = <Widget>[
       Icon(icon, color: kLightGray, size: 18),
@@ -71,7 +71,9 @@ class FooterContact extends StatelessWidget {
         text,
         style: theme.bodyMedium!.copyWith(color: kLightGray),
       ),
-    ].addRow();
+    ].addRow(
+      mainAxisSize: MainAxisSize.min,
+    );
 
     return onTap != null ? row.addInkWell(onTap: onTap) : row;
   }

@@ -16,15 +16,14 @@ class HomeViewTablet extends StatefulWidget {
   State<HomeViewTablet> createState() => _HomeViewTabletState();
 }
 
-class _HomeViewTabletState extends State<HomeViewTablet>
-    with TickerProviderStateMixin {
+class _HomeViewTabletState extends State<HomeViewTablet> {
   late final HomeViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
     _viewModel = HomeViewModel();
-    _viewModel.init(this);
+    _viewModel.init();
   }
 
   @override

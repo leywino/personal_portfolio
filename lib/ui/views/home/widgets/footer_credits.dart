@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:personal_portfolio/extensions/layout_adapter_ex.dart';
 import 'package:personal_portfolio/extensions/string_ex.dart';
 import 'package:personal_portfolio/extensions/widget_ex.dart';
 import 'package:personal_portfolio/ui/common/constants.dart';
 
 class FooterCredits extends StatelessWidget {
-  const FooterCredits({super.key});
+  const FooterCredits({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,8 @@ class FooterCredits extends StatelessWidget {
         child: <Widget>[
           Text(
             ksInspiredFrom,
-            style: theme.bodyLarge!.copyWith(color: kLightGray),
+            style: theme.bodyLarge!.copyWith(
+                color: kLightGray, fontSize: context.adaptive(14, 16)),
           ),
           verticalSpaceSmall,
           _buildCreditRow(
@@ -34,9 +38,9 @@ class FooterCredits extends StatelessWidget {
             theme: theme,
           ),
         ].addColumn(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-        ));
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min));
   }
 
   Widget _buildCreditRow({
@@ -53,6 +57,8 @@ class FooterCredits extends StatelessWidget {
           color: kLightGray,
         ),
       ),
-    ].addRow().addInkWell(onTap: link.launchWebsite);
+    ]
+        .addRow(mainAxisSize: MainAxisSize.min)
+        .addInkWell(onTap: link.launchWebsite);
   }
 }

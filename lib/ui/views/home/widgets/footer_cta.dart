@@ -29,6 +29,7 @@ class FooterCTA extends StatelessWidget {
           color: kLightGray,
           fontWeight: FontWeight.bold,
           fontFamily: "JetBrainsMono",
+          fontSize: getResponsiveExtraLargeFontSize(context),
           height: 1.4,
         ),
         textAlign: isMobile ? TextAlign.center : TextAlign.left,

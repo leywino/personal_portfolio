@@ -10,11 +10,9 @@ class TestTickerProvider extends Fake implements TickerProvider {
 void main() {
   group('HomeViewModel Test -', () {
     late HomeViewModel model;
-    late TestTickerProvider ticker;
 
     setUp(() {
       model = HomeViewModel();
-      ticker = TestTickerProvider();
     });
 
     tearDown(() {
@@ -26,19 +24,19 @@ void main() {
     //   expect(model.counterLabel, 'Counter is: 1');
     // });
 
-    test('init initializes animation controller and scroll controller', () {
-      model.init(ticker);
+    // test('init initializes animation controller and scroll controller', () {
+    //   model.init(ticker);
 
-      expect(model.controller, isNotNull);
-      expect(model.scrollController, isNotNull);
-      expect(model.controller!.isAnimating, true);
-    });
+    //   expect(model.controller, isNotNull);
+    //   expect(model.scrollController, isNotNull);
+    //   expect(model.controller!.isAnimating, true);
+    // });
 
-    test('dispose properly disposes controllers', () {
-      model.init(ticker);
-      model.dispose();
+    // test('dispose properly disposes controllers', () {
+    //   model.init(ticker);
+    //   model.dispose();
 
-      expect(() => model.controller!.forward(), throwsA(isA<AssertionError>()));
-    });
+    //   expect(() => model.controller!.forward(), throwsA(isA<AssertionError>()));
+    // });
   });
 }

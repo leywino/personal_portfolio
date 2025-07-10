@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/extensions/extensions.dart';
 import 'package:personal_portfolio/ui/views/home/sections/about_me_section.dart';
@@ -16,20 +14,18 @@ class HomeViewMobile extends StatefulWidget {
   State<HomeViewMobile> createState() => _HomeViewMobileState();
 }
 
-class _HomeViewMobileState extends State<HomeViewMobile>
-    with TickerProviderStateMixin {
+class _HomeViewMobileState extends State<HomeViewMobile> {
   late final HomeViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
     _viewModel = HomeViewModel();
-    _viewModel.init(this);
+    _viewModel.init();
   }
 
   @override
   Widget build(BuildContext context) {
-    log('rebuild mobile');
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, viewModel, child) {
