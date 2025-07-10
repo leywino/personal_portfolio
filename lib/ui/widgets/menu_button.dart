@@ -29,7 +29,7 @@ class MenuButton extends StatelessWidget {
         onTap: onPressed,
         borderRadius: BorderRadius.circular(s50),
         child: Icon(
-          hasMenuTapped ? Icons.close_outlined : Icons.menu,
+          hasMenuTapped ? Icons.close_outlined : Icons.menu_outlined,
           size: size - difference,
           color: kWhite,
         ).addCenter().addContainer(
